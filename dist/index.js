@@ -449,9 +449,13 @@ if (window.__gameinformerBp) return;
 window.__gameinformerBp = true;
 var PCGW = 'https://www.pcgamingwiki.com/api/appid.php?appid=';
 var PDB = 'https://www.protondb.com/app/';
-// Match the native BP icon-button focus style: white bg, dark icon.
+// Match the native BP icon-button hover style: subtle translucent gray
+// background with a quick fade. Remove any stale style tags from previous
+// injections so old rules (e.g. a color change) never linger.
+var oldStyles = Array.from(document.querySelectorAll('style')).filter(function(s){ return s.textContent.indexOf('data-gameinformer') > -1; });
+oldStyles.forEach(function(s){ s.remove(); });
 var style = document.createElement('style');
-style.textContent = '[data-gameinformer]:hover, [data-gameinformer]:focus { background-color: rgb(255, 255, 255) !important; color: rgb(14, 20, 27) !important; }';
+style.textContent = '[data-gameinformer] { transition: background-color 0.12s ease 0s; } [data-gameinformer]:hover { background-color: rgba(205, 213, 226, 0.26) !important; }';
 document.head.appendChild(style);
 function appId(){
   // The BP window URL is about:blank, so resolve the app id from the React
