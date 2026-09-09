@@ -34,6 +34,10 @@ if (window.__gameinformerBp) return;
 window.__gameinformerBp = true;
 var PCGW = 'https://www.pcgamingwiki.com/api/appid.php?appid=';
 var PDB = 'https://www.protondb.com/app/';
+// Match the native BP icon-button focus style: white bg, dark icon.
+var style = document.createElement('style');
+style.textContent = '[data-gameinformer]:hover, [data-gameinformer]:focus { background-color: rgb(255, 255, 255) !important; color: rgb(14, 20, 27) !important; }';
+document.head.appendChild(style);
 function appId(){
   // The BP window URL is about:blank, so resolve the app id from the React
   // fiber chain of the controller button (same pattern as DesktopPatch).
