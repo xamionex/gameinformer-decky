@@ -1,0 +1,11 @@
+{
+  "name": "GameInformer",
+  "author": "xamionex",
+  "flags": ["debug"],
+  "api_version": 1,
+  "license": "MIT",
+  "publish": {
+    "tags": ["utilities", "steam", "pcgw", "protondb"],
+    "description": "Adds PCGW and ProtonDB buttons to the Steam game page and in-game overlay."
+  }
+}
