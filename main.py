@@ -115,6 +115,32 @@ class Plugin:
         c.pop("title", None)
         return c
 
+    async def discover_bp_tab(self) -> dict | None:
+        """Find the Big Picture Mode window tab via CDP.
+
+        The BP window URL is `about:blank?createflags=<N>&minwidth=853&minheight=534...`
+        with the title "Steam Big Picture Mode". Match on the stable
+        `minwidth=853&minheight=534` part plus the `about:blank?createflags=` prefix.
+        """
+        for port in CDP_PORTS:
+            try:
+                resp = requests.get(f"http://localhost:{port}/json", timeout=3)
+                tabs = resp.json()
+                for t in tabs:
+                    url = t.get("url", "")
+                    if (
+                        url.startswith("about:blank?createflags=")
+                        and "minwidth=853" in url
+                        and "minheight=534" in url
+                    ):
+                        return {
+                            "webSocketDebuggerUrl": t.get("webSocketDebuggerUrl"),
+                            "url": url,
+                        }
+            except Exception:
+                continue
+        return None
+
     async def discover_overlay_tab(self) -> dict | None:
         """Find the in-game overlay window tab via CDP (only present while a game runs).
 
