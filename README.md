@@ -24,7 +24,7 @@ A [Decky Loader](https://github.com/SteamDeckHomebrew/decky-loader) plugin that 
 ### Automatic
 
 ```bash
-curl -L https://raw.githubusercontent.com/xamionex/gameinformer-decky/refs/heads/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/xamionex/gameinformer-decky/refs/heads/main/install.sh | sh
 ```
 
 The installer downloads the latest `main` branch, builds the frontend if `dist/` is not shipped, and copies the plugin into `~/homebrew/plugins/gameinformer-decky`. It does not restart Steam or the plugin loader.

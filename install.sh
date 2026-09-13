@@ -3,7 +3,7 @@ set -euo pipefail
 
 PLUGIN_NAME="gameinformer-decky"
 DEST="$HOME/homebrew/plugins/$PLUGIN_NAME"
-REPO_URL="${REPO_URL:-https://github.com/petar/gameinformer-decky}"
+REPO_URL="${REPO_URL:-https://github.com/xamionex/gameinformer-decky}"
 BRANCH="${BRANCH:-main}"
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
