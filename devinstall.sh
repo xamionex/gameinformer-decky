@@ -54,8 +54,9 @@ sudo mkdir -p "$DEST"
 sudo cp -r "$SRC"/main.py "$SRC"/dist "$SRC"/plugin.json "$SRC"/package.json "$DEST"/
 
 # --- Restart plugin loader ---------------------------------------------------
-echo "==> Restarting plugin_loader and stopping steam"
+echo "==> Exiting steam"
 pkill -TERM -x steam
-sudo systemctl restart plugin_loader
+#echo "==> Restarting PluginLoader"
+#sudo systemctl restart plugin_loader
 
 echo "==> Done. $PLUGIN_NAME installed at $DEST"
